@@ -8,11 +8,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
  * User: general
+ * Email: im-leva@yandex.ru
  * Date: 16.06.13
- * Time: 0:11
- * To change this template use File | Settings | File Templates.
  */
 public class ScheduleDAO extends BaseDaoImpl<Schedule, Integer> {
 

@@ -7,11 +7,9 @@ import com.j256.ormlite.field.DatabaseField;
 import java.util.Date;
 
 /**
- * Created with IntelliJ IDEA.
  * User: general
+ * Email: im-leva@yandex.ru
  * Date: 15.06.13
- * Time: 19:16
- * To change this template use File | Settings | File Templates.
  */
 
 @DatabaseTable(tableName = "task")

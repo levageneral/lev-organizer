@@ -3,11 +3,9 @@ package model.database.factory;
 import android.app.Application;
 
 /**
- * Created with IntelliJ IDEA.
  * User: general
+ * Email: im-leva@yandex.ru
  * Date: 15.06.13
- * Time: 23:45
- * To change this template use File | Settings | File Templates.
  */
 public class MyAplication extends Application {
 

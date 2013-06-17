@@ -14,11 +14,9 @@ import model.database.entity.Task;
 import java.sql.SQLException;
 
 /**
- * Created with IntelliJ IDEA.
  * User: general
+ * Email: im-leva@yandex.ru
  * Date: 15.06.13
- * Time: 23:27
- * To change this template use File | Settings | File Templates.
  */
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
@@ -35,7 +33,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    // Выполняется когда файл БД не найден на устройстве
     @Override
     public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource){
          try
@@ -49,7 +46,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
          }
     }
 
-    //Виполняется когда версия БД отличается от текущей
+
     @Override
     public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVer, int newVer){
         try
@@ -63,7 +60,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
     }
 
-    //синголтон для ScheduleDAO
+
     public ScheduleDAO getScheduleDAO() throws SQLException{
         if (scheduleDAO == null){
             scheduleDAO = new ScheduleDAO(getConnectionSource(), Schedule.class);
@@ -71,7 +68,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return scheduleDAO;
     }
 
-    //синглотон для TaskDAO
+
     public  TaskDAO getTaskDAO() throws SQLException{
         if (taskDAO == null){
             taskDAO = new TaskDAO(getConnectionSource(), Task.class);
@@ -79,7 +76,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return taskDAO;
     }
 
-    //Виполняется при закрытии приложения
+
     @Override
     public void close(){
         super.close();

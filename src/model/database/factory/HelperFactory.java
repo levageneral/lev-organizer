@@ -7,11 +7,9 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 
 
 /**
- * Created with IntelliJ IDEA.
  * User: general
+ * Email: im-leva@yandex.ru
  * Date: 15.06.13
- * Time: 23:18
- * To change this template use File | Settings | File Templates.
  */
 public class HelperFactory {
 

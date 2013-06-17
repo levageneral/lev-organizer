@@ -6,17 +6,13 @@ import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import model.database.entity.Task;
 
-//import java.sql.Date;
-import java.util.Date;
 import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
  * User: general
- * Date: 16.06.13
- * Time: 0:11
- * To change this template use File | Settings | File Templates.
+ * Email: im-leva@yandex.ru
+ * Date: 17.06.13
  */
 public class TaskDAO extends BaseDaoImpl<Task, Integer> {
 
@@ -44,7 +40,4 @@ public class TaskDAO extends BaseDaoImpl<Task, Integer> {
         List<Task> taskByPriorityList = query(preparedQuery);
         return taskByPriorityList;
     }
-    //public List<Task> getTaskByDate(Date date) throws SQLException{
-        //QueryBuilder<Task, Date> queryBuilder = queryBuilder();
-    //}
-}
+    }
