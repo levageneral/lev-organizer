@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../library/ormlite-android-4.45.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../library/aibolit-0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../library/ormlite-core-4.45.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../library/ormlite-android-4.6.jar.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

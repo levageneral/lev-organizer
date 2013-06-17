@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="javadoc">
+    <CLASSES />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../android-info/javadoc/ormlite-android-4.45-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../android-info/javadoc/ormlite-core-4.45-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>
