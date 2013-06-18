@@ -1,9 +1,8 @@
-package model.database.factory;
+package ru.hw_team.lev.model.database.factory;
 
 
 import android.content.Context;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 
 
 /**
@@ -15,7 +14,7 @@ public class HelperFactory {
 
     private static DatabaseHelper databaseHelper;
 
-    public static DatabaseHelper getHelper(){
+    public synchronized static DatabaseHelper getHelper(){
         return databaseHelper;
     }
 

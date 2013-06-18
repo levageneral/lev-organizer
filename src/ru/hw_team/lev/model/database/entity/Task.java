@@ -1,8 +1,8 @@
-package model.database.entity;
+package ru.hw_team.lev.model.database.entity;
 
 import com.j256.ormlite.field.DataType;
-import com.j256.ormlite.table.DatabaseTable;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.Date;
 

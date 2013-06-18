@@ -1,8 +1,8 @@
-package model.database.dao;
+package ru.hw_team.lev.model.database.dao;
 
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.support.ConnectionSource;
-import model.database.entity.Schedule;
+import ru.hw_team.lev.model.database.entity.Schedule;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -16,7 +16,7 @@ public class ScheduleDAO extends BaseDaoImpl<Schedule, Integer> {
 
     public ScheduleDAO(ConnectionSource connectionSource, Class<Schedule> dataClass) throws SQLException{
         super(connectionSource, dataClass);
-        //To change body of created methods use File | Settings | File Templates.
+
     }
 
     public List<Schedule> getAllSchedule() throws SQLException{

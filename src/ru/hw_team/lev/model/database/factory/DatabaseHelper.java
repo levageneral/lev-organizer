@@ -1,4 +1,4 @@
-package model.database.factory;
+package ru.hw_team.lev.model.database.factory;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,10 +6,10 @@ import android.util.Log;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import model.database.dao.ScheduleDAO;
-import model.database.dao.TaskDAO;
-import model.database.entity.Schedule;
-import model.database.entity.Task;
+import ru.hw_team.lev.model.database.dao.ScheduleDAO;
+import ru.hw_team.lev.model.database.dao.TaskDAO;
+import ru.hw_team.lev.model.database.entity.Schedule;
+import ru.hw_team.lev.model.database.entity.Task;
 
 import java.sql.SQLException;
 

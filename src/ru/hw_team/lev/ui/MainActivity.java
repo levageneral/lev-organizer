@@ -1,7 +1,8 @@
-package ru.hw_team.lev;
+package ru.hw_team.lev.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
+import ru.hw_team.lev.R;
 
 public class MainActivity extends Activity
 {
