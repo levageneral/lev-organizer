@@ -1,6 +1,7 @@
-package ru.hw_team.lev.model.database.factory;
+package ru.hw_team.lev.util;
 
 import android.app.Application;
+import ru.hw_team.lev.model.database.factory.HelperFactory;
 
 /**
  * User: general
