@@ -29,48 +29,45 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private ScheduleDAO scheduleDAO = null;
     private TaskDAO taskDAO = null;
 
-    public DatabaseHelper(Context context){
+    public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource){
-         try
-         {
-             TableUtils.createTable(connectionSource, Schedule.class);
-             TableUtils.createTable(connectionSource, Task.class);
-         }
-         catch (SQLException e) {
-             Log.e(LOG_TAG, "error create DB " + DATABASE_NAME);
-             throw  new RuntimeException(e);
-         }
-    }
-
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVer, int newVer){
-        try
-        {
-          TableUtils.dropTable(connectionSource, Schedule.class, true);
-          TableUtils.dropTable(connectionSource, Task.class, true);
-          onCreate(db, connectionSource);
+    public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
+        try {
+            TableUtils.createTable(connectionSource, Schedule.class);
+            TableUtils.createTable(connectionSource, Task.class);
         } catch (SQLException e) {
-         Log.e(LOG_TAG, "error upgrading DB " + DATABASE_NAME + "from version" + oldVer);
+            Log.e(LOG_TAG, "error create DB " + DATABASE_NAME);
             throw new RuntimeException(e);
         }
     }
 
 
-    public ScheduleDAO getScheduleDAO() throws SQLException{
-        if (scheduleDAO == null){
+    @Override
+    public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVer, int newVer) {
+        try {
+            TableUtils.dropTable(connectionSource, Schedule.class, true);
+            TableUtils.dropTable(connectionSource, Task.class, true);
+            onCreate(db, connectionSource);
+        } catch (SQLException e) {
+            Log.e(LOG_TAG, "error upgrading DB " + DATABASE_NAME + "from version" + oldVer);
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public ScheduleDAO getScheduleDAO() throws SQLException {
+        if (scheduleDAO == null) {
             scheduleDAO = new ScheduleDAO(getConnectionSource(), Schedule.class);
         }
         return scheduleDAO;
     }
 
 
-    public  TaskDAO getTaskDAO() throws SQLException{
-        if (taskDAO == null){
+    public TaskDAO getTaskDAO() throws SQLException {
+        if (taskDAO == null) {
             taskDAO = new TaskDAO(getConnectionSource(), Task.class);
         }
         return taskDAO;
@@ -78,7 +75,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
 
     @Override
-    public void close(){
+    public void close() {
         super.close();
         scheduleDAO = null;
         taskDAO = null;

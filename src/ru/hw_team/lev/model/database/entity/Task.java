@@ -13,7 +13,6 @@ import java.util.Date;
  */
 
 @DatabaseTable(tableName = "task")
-
 public class Task {
 
     public final static String TASK_FIELD_ID = "_id";
@@ -39,17 +38,17 @@ public class Task {
     private Integer status;
 
     @DatabaseField(dataType = DataType.INTEGER, columnName = TASK_FIELD_PRIORITY)
-    private  Integer priority;
+    private Integer priority;
 
 
-    public Task(){
+    public Task() {
 
     }
 
-    public Task(int id, String description, String title, Date date, int status, int priority){
-        this.id =id;
+    public Task(int id, String description, String title, Date date, int status, int priority) {
+        this.id = id;
         this.description = description;
-        this.title =title;
+        this.title = title;
         this.date = date;
         this.status = status;
         this.priority = priority;

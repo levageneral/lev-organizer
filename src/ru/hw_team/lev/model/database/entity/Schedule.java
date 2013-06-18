@@ -13,15 +13,13 @@ import com.j256.ormlite.table.DatabaseTable;
 import java.util.Date;
 
 @DatabaseTable(tableName = "schedule")
-
-public class Schedule{
+public class Schedule {
 
     public final static String SCHEDULE_FIELD_ID = "_id";
     public final static String SCHEDULE_FIELD_DESCRIPTION = "description";
     public final static String SCHEDULE_FIELD_TITLE = "title";
-    public final static String SCHEDULE_FIELD_DATE_START = "dateStart";
-    public final static String SCHEDULE_FIELD_DATE_END = "dateEnd";
-
+    public final static String SCHEDULE_FIELD_DATE_START = "date_start";
+    public final static String SCHEDULE_FIELD_DATE_END = "date_end";
 
 
     @DatabaseField(generatedId = true, columnName = SCHEDULE_FIELD_ID)
@@ -31,7 +29,7 @@ public class Schedule{
     private String description;
 
     @DatabaseField(dataType = DataType.STRING, columnName = SCHEDULE_FIELD_TITLE)
-    private  String title;
+    private String title;
 
     @DatabaseField(dataType = DataType.DATE, columnName = SCHEDULE_FIELD_DATE_START)
     private Date dateStart;
@@ -39,16 +37,16 @@ public class Schedule{
     @DatabaseField(dataType = DataType.DATE, columnName = SCHEDULE_FIELD_DATE_END)
     private Date dateEnd;
 
-    public Schedule(){
+    public Schedule() {
 
     }
 
-    public Schedule(int id, String description, String title, Date dateStart, Date dateEnd){
-     this.id = id;
-     this.description = description;
-     this.title = title;
-     this.dateStart = dateStart;
-     this.dateEnd = dateEnd;
+    public Schedule(int id, String description, String title, Date dateStart, Date dateEnd) {
+        this.id = id;
+        this.description = description;
+        this.title = title;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
     }
 
 

@@ -29,16 +29,14 @@ public class TaskDAO extends BaseDaoImpl<Task, Integer> {
         QueryBuilder<Task, Integer> queryBuilder = queryBuilder();
         queryBuilder.where().eq(Task.TASK_FIELD_STATUS, status);
         PreparedQuery<Task> preparedQuery = queryBuilder.prepare();
-        List<Task> taskByStatusList = query(preparedQuery);
-        return taskByStatusList;
+        return query(preparedQuery);
     }
 
     public List<Task> getTaskByPriority(Integer priority) throws SQLException {
         QueryBuilder<Task, Integer> queryBuilder = queryBuilder();
         queryBuilder.where().eq(Task.TASK_FIELD_PRIORITY, priority);
         PreparedQuery<Task> preparedQuery = queryBuilder.prepare();
-        List<Task> taskByPriorityList = query(preparedQuery);
-        return taskByPriorityList;
+        return query(preparedQuery);
     }
 }
 

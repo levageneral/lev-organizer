@@ -14,15 +14,16 @@ public class HelperFactory {
 
     private static DatabaseHelper databaseHelper;
 
-    public synchronized static DatabaseHelper getHelper(){
+    public synchronized static DatabaseHelper getHelper() {
         return databaseHelper;
     }
 
-    public static void setHelper(Context context){
+    public static void setHelper(Context context) {
         databaseHelper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
     }
- public static void releaseHelper(){
-    OpenHelperManager.releaseHelper();
-    databaseHelper = null;
- }
+
+    public static void releaseHelper() {
+        OpenHelperManager.releaseHelper();
+        databaseHelper = null;
+    }
 }

@@ -7,7 +7,7 @@ import android.app.Application;
  * Email: im-leva@yandex.ru
  * Date: 15.06.13
  */
-public class MyAplication extends Application {
+public class LevAplication extends Application {
 
     @Override
     public void onCreate(){
@@ -16,7 +16,7 @@ public class MyAplication extends Application {
     }
 
     @Override
-    public void onTerminate(){
+    public void onTerminate() {
         HelperFactory.releaseHelper();
         super.onTerminate();
     }
