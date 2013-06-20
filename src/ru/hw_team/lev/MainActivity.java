@@ -1,4 +1,4 @@
-package ru.hw_team.lev.ui;
+package ru.hw_team.lev;
 
 import android.app.Activity;
 import android.os.Bundle;
