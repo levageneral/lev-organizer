@@ -3,7 +3,7 @@
       package="ru.hw_team.lev.ui"
       android:versionCode="1"
       android:versionName="1.0">
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
+    <application android:name="ru.hw_team.lev.util.LevApplication" android:label="@string/app_name" android:icon="@drawable/ic_launcher">
         <activity android:name="MainActivity"
                   android:label="@string/app_name">
             <intent-filter>

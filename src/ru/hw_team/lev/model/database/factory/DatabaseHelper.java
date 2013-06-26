@@ -38,6 +38,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             TableUtils.createTable(connectionSource, Schedule.class);
             TableUtils.createTable(connectionSource, Task.class);
+            Log.e(LOG_TAG, "create DB on DatabaseHelper" + DATABASE_NAME);
         } catch (SQLException e) {
             Log.e(LOG_TAG, "error create DB " + DATABASE_NAME);
             throw new RuntimeException(e);
@@ -68,7 +69,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     public TaskDAO getTaskDAO() throws SQLException {
         if (taskDAO == null) {
-            taskDAO = new TaskDAO(getConnectionSource(), Task.class);
+           taskDAO = new TaskDAO(getConnectionSource(), Task.class);
         }
         return taskDAO;
     }

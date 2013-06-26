@@ -8,10 +8,10 @@ import ru.hw_team.lev.model.database.factory.HelperFactory;
  * Email: im-leva@yandex.ru
  * Date: 15.06.13
  */
-public class LevAplication extends Application {
+public class LevApplication extends Application {
 
     @Override
-    public void onCreate(){
+    public void onCreate() {
         super.onCreate();
         HelperFactory.setHelper(getApplicationContext());
     }

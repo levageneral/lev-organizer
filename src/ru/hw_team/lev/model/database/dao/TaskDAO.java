@@ -16,6 +16,8 @@ import java.util.List;
  */
 public class TaskDAO extends BaseDaoImpl<Task, Integer> {
 
+    public int ERROR = -1;
+
     public TaskDAO(ConnectionSource connectionSource, Class<Task> dataClass) throws SQLException {
         super(connectionSource, dataClass);
     }
@@ -37,6 +39,19 @@ public class TaskDAO extends BaseDaoImpl<Task, Integer> {
         queryBuilder.where().eq(Task.TASK_FIELD_PRIORITY, priority);
         PreparedQuery<Task> preparedQuery = queryBuilder.prepare();
         return query(preparedQuery);
+    }
+
+
+    public int createTask(Task task){
+        if (task != null){
+        try {
+            return this.create(task);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        }
+        return ERROR;
+
     }
 }
 

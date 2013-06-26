@@ -1,5 +1,6 @@
 package ru.hw_team.lev.model.database.entity;
 
+import android.util.Log;
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -21,6 +22,7 @@ public class Task {
     public final static String TASK_FIELD_DATE = "date";
     public final static String TASK_FIELD_STATUS = "status";
     public final static String TASK_FIELD_PRIORITY = "priority";
+    private static final String LOG_TAG = "myLogs";
 
     @DatabaseField(generatedId = true, columnName = TASK_FIELD_ID)
     private int id;
@@ -52,6 +54,7 @@ public class Task {
         this.date = date;
         this.status = status;
         this.priority = priority;
+        Log.e(LOG_TAG, "LOG Message constructor Task()");
     }
 
     public int getId() {
