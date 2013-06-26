@@ -14,7 +14,9 @@ import ru.hw_team.lev.model.database.entity.Task;
 import ru.hw_team.lev.model.database.factory.HelperFactory;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends Activity {
 
@@ -67,5 +69,31 @@ public class MainActivity extends Activity {
 
     }
 
+    @InjectOnClickListener(R.id.get_all_btn)
+    public void onButtonGetAllTaskClick(View view) {
+        printAllTask();
+    }
 
+    private void printAllTask() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+
+        List<Task> tasks = null;
+        try {
+            tasks = HelperFactory.getHelper().getTaskDAO().getAllTask();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if (tasks != null && !tasks.isEmpty()) {
+            for (Task task : tasks) {
+                if (task != null) {
+                    Log.d(TAG, "===========START============");
+                    Log.d(TAG, " Title = " + task.getTitle());
+                    Log.d(TAG, " Description = " + task.getDescription());
+                    Log.d(TAG, " Date = " + dateFormat.format(task.getDate()));
+                    Log.d(TAG, "============END=============");
+                }
+            }
+        }
+    }
 }

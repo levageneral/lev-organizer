@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">MainActivity</string>
     <string name="btn_add_to_db">Add to BD</string>
+    <string name="btn_get_all">Get All</string>
     <string name="description">Description</string>
     <string name="description_hint">Write Description</string>
 </resources>
