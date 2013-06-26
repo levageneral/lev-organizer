@@ -1,55 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/scroll"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-    <TextView
+        <TextView
+            android:id="@+id/description_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description"
-            android:id="@+id/tvDes"
+            android:text="@string/description"
             android:layout_gravity="center|center_vertical"/>
-    <EditText
-            android:layout_width="392dp"
+        <EditText
+            android:id="@+id/description_et"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
-            android:id="@+id/etDes"/>
-    <TextView
+            android:hint="@string/description_hint"/>
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Status"
             android:id="@+id/tvStatus"
             android:layout_gravity="center|center_vertical"/>
-    <EditText
-            android:layout_width="382dp"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
+            android:hint=""
             android:id="@+id/etStatus"
             android:layout_gravity="center|center_vertical"/>
-    <TextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Date"
             android:id="@+id/tvDate"
             android:layout_gravity="center|center_vertical"/>
-    <EditText
-            android:layout_width="426dp"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
+            android:hint=""
             android:id="@+id/etDate"
             android:layout_gravity="left|center_vertical"/>
-    <Button
+        <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Add to BD"
+            android:text="@string/btn_add_to_db"
             android:id="@+id/btnAdd"/>
 
-</LinearLayout>
+    </LinearLayout>
 
 </ScrollView>

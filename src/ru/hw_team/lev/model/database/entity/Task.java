@@ -37,10 +37,10 @@ public class Task {
     private Date date;
 
     @DatabaseField(dataType = DataType.INTEGER, columnName = TASK_FIELD_STATUS)
-    private Integer status;
+    private int status;
 
     @DatabaseField(dataType = DataType.INTEGER, columnName = TASK_FIELD_PRIORITY)
-    private Integer priority;
+    private int priority;
 
 
     public Task() {

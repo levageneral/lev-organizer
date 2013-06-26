@@ -20,7 +20,7 @@ import java.sql.SQLException;
  */
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
-    private static final String LOG_TAG = DatabaseHelper.class.getSimpleName();
+    private static final String TAG = DatabaseHelper.class.getSimpleName();
 
     private static final String DATABASE_NAME = "lev-organizer.db";
 
@@ -38,9 +38,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             TableUtils.createTable(connectionSource, Schedule.class);
             TableUtils.createTable(connectionSource, Task.class);
-            Log.e(LOG_TAG, "create DB on DatabaseHelper" + DATABASE_NAME);
+            Log.e(TAG, "create DB on DatabaseHelper" + DATABASE_NAME);
         } catch (SQLException e) {
-            Log.e(LOG_TAG, "error create DB " + DATABASE_NAME);
+            Log.e(TAG, "error create DB " + DATABASE_NAME);
             throw new RuntimeException(e);
         }
     }
@@ -53,7 +53,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(connectionSource, Task.class, true);
             onCreate(db, connectionSource);
         } catch (SQLException e) {
-            Log.e(LOG_TAG, "error upgrading DB " + DATABASE_NAME + "from version" + oldVer);
+            Log.e(TAG, "error upgrading DB " + DATABASE_NAME + "from version" + oldVer);
             throw new RuntimeException(e);
         }
     }
