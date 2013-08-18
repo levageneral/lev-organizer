@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MainActivity</string>
-    <string name="btn_add_to_db">Add to BD</string>
-    <string name="btn_get_all">Get All</string>
+    <string name="btn_go_to_task">Add Task</string>
+    <string name="btn_go_to_schedule">Add Schedule</string>
+
+    <string name="btn_add">Add</string>
+    <string name="btn_cancel">Cancel</string>
+
     <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="date">Date</string>
+    <string name="date_start">Date start</string>
+    <string name="date_end">Date end</string>
+    <string name="status">Status</string>
+    <string name="priority">Priority</string>
+
     <string name="description_hint">Write Description</string>
+    <string name="title_hint">Write Title</string>
+    <string name="default_date">18/08/2013 11:19</string>
+
 </resources>

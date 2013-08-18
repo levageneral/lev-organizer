@@ -2,72 +2,25 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scroll"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@android:color/darker_gray">
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <TextView
-                android:id="@+id/main_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Main form"
-                android:layout_gravity="center|center_vertical"
-                android:textColor="@android:color/black"/>
-        <TextView
-            android:id="@+id/description_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/description"
-            android:layout_gravity="center|center_vertical"
-            android:textColor="@android:color/black"/>
-        <EditText
-            android:id="@+id/description_et"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/description_hint"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Status"
-            android:id="@+id/tvStatus"
-            android:layout_gravity="center|center_vertical"
-            android:textColor="@android:color/black"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint=""
-            android:id="@+id/etStatus"
-            android:layout_gravity="center|center_vertical"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Date"
-            android:id="@+id/tvDate"
-            android:layout_gravity="center|center_vertical"
-            android:textColor="@android:color/black"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint=""
-            android:id="@+id/etDate"
-            android:layout_gravity="left|center_vertical"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
             <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_add_to_db"
-                android:id="@+id/btnAdd"
+                style="@style/Button"
+                android:text="@string/btn_go_to_task"
+                android:id="@+id/btnGoTask"
                 android:layout_weight="1"/>
             <Button
-                android:id="@+id/get_all_btn"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_get_all"
+                style="@style/Button"
+                android:id="@+id/btnGoSchedule"
+                android:text="@string/btn_go_to_schedule"
                 android:layout_weight="1"/>
         </LinearLayout>
 

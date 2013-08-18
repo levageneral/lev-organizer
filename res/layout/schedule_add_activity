@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                style="@style/TextView"
+                android:id="@+id/scheduleDescriptionTv"
+                android:text="@string/description"/>
+        <EditText
+                style="@style/EditText"
+                android:id="@+id/scheduleDescriptionEt"
+                android:hint="@string/description_hint"/>
+        <TextView
+                style="@style/TextView"
+                android:id="@+id/scheduleTitleTv"
+                android:text="@string/title"/>
+        <EditText
+                style="@style/EditText"
+                android:id="@+id/scheduleTitleEt"
+                android:hint="@string/title_hint"/>
+        <TextView
+                style="@style/TextView"
+                android:text="@string/date_start"
+                android:id="@+id/scheduleDateStartTv"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp">
+            <TextView
+                    style="@style/TextView"
+                    android:hint="@string/default_date"
+                    android:id="@+id/scheduleDateStartInfoTv"
+                    android:textSize="20dp"/>
+            <ImageButton
+                    android:id="@+id/scheduleImgBtnDateStart"
+                    android:layout_width="25dip"
+                    android:layout_height="25dip"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/calendar" />
+        </LinearLayout>
+        <TextView
+                style="@style/TextView"
+                android:text="@string/date_end"
+                android:id="@+id/scheduleDateEndTv"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp">
+            <TextView
+                    style="@style/TextView"
+                    android:hint="@string/default_date"
+                    android:id="@+id/scheduleDateEndInfoTv"
+                    android:textSize="20dp"/>
+            <ImageButton
+                    android:id="@+id/scheduleImgBtnDateEnd"
+                    android:layout_width="25dip"
+                    android:layout_height="25dip"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/calendar" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <Button
+                    style="@style/Button"
+                    android:text="@string/btn_cancel"
+                    android:id="@+id/btnScheduleCancel"
+                    android:layout_weight="1"/>
+            <Button
+                    style="@style/Button"
+                    android:text="@string/btn_add"
+                    android:id="@+id/btnScheduleAdd"
+                    android:layout_weight="1"
+                    android:layout_gravity="bottom|center_vertical"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

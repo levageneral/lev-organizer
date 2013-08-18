@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+            style="@style/TextView"
+            android:id="@+id/taskDescriptionTv"
+            android:text="@string/description"/>
+        <EditText
+                style="@style/EditText"
+                android:id="@+id/taskDescriptionEt"
+                android:hint="@string/description_hint"/>
+        <TextView
+                style="@style/TextView"
+                android:id="@+id/taskTitleTv"
+                android:text="@string/title"/>
+        <EditText
+                style="@style/EditText"
+                android:id="@+id/taskTitleEt"
+                android:hint="@string/title_hint"/>
+        <TextView
+                style="@style/TextView"
+                android:text="@string/date"
+                android:id="@+id/taskDateTv"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp">
+        <TextView
+                style="@style/TextView"
+                android:hint="@string/default_date"
+                android:id="@+id/taskDateInfoTv"
+                android:textSize="20dp"/>
+        <ImageButton
+                android:id="@+id/taskImgBtnDate"
+                android:layout_width="25dip"
+                android:layout_height="25dip"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/calendar" />
+        </LinearLayout>
+         <TextView
+                style="@style/TextView"
+                android:text="@string/status"
+                android:id="@+id/taskStatusTv"/>
+        <EditText
+                style="@style/EditText"
+                android:hint=""
+                android:id="@+id/tasStatusEt"/>
+        <TextView
+                style="@style/TextView"
+                android:text="@string/priority"
+                android:id="@+id/taskPtiorityTv"/>
+        <EditText
+                style="@style/EditText"
+                android:hint=""
+                android:id="@+id/taskPtiorityEt"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <Button
+                    style="@style/Button"
+                    android:text="@string/btn_cancel"
+                    android:id="@+id/btnTaskCancel"
+                    android:layout_weight="1"/>
+            <Button
+                    style="@style/Button"
+                    android:text="@string/btn_add"
+                    android:id="@+id/btnTaskAdd"
+                    android:layout_weight="1"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,11 +18,14 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import android.content.Intent;
+
+import static ru.hw_team.lev.ui.R.id.btnGoTask;
 
 public class MainActivity extends Activity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-
+   /*
     @InjectView(R.id.description_tv)
     private TextView tvDes;
 
@@ -39,16 +43,54 @@ public class MainActivity extends Activity {
 
     @InjectView(R.id.etDate)
     private EditText etDate;
+    */
+   //Button btnGoTask;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         Aibolit.doInjections(this);
-        Log.d(TAG, "LOG Message onCreate-1");
+    }
+
+    @InjectOnClickListener(R.id.btnGoTask)
+    private void onBtnAddTaskClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.btnGoTask:
+                Intent intent = new Intent(this, TaskAddActivity.class);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
+    }
+
+    @InjectOnClickListener(R.id.btnGoSchedule)
+    private void onBtnAddScheduleClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.btnGoSchedule:
+                Intent intent = new Intent(this, ScheduleAddActivity.class);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
     }
 
 
+
+
+
+
+
+
+
+
+
+  /*
     @InjectOnClickListener(R.id.btnAdd)
     private void onBtnAddClick(View v) {
         Log.d(TAG, "LOG Message onClick-1");
@@ -95,5 +137,5 @@ public class MainActivity extends Activity {
                 }
             }
         }
-    }
+    } */
 }
