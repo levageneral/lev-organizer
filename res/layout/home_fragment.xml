@@ -15,7 +15,7 @@
             <Button
                 style="@style/Button"
                 android:text="@string/btn_go_to_task"
-                android:id="@+id/btnGoTask"
+                android:id="@id/add_task_btn"
                 android:layout_weight="1"/>
             <Button
                 style="@style/Button"

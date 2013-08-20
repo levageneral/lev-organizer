@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MainActivity</string>
+    <string name="app_name">LEV</string>
     <string name="btn_go_to_task">Add Task</string>
     <string name="btn_go_to_schedule">Add Schedule</string>
 

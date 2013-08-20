@@ -1,28 +1,15 @@
-package ru.hw_team.lev.ui;
+package ru.hw_team.lev.ui.activities;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import com.danikula.aibolit.Aibolit;
-import com.danikula.aibolit.annotation.InjectOnClickListener;
-import com.danikula.aibolit.annotation.InjectView;
-import ru.hw_team.lev.model.database.entity.Task;
-import ru.hw_team.lev.model.database.factory.HelperFactory;
+import ru.hw_team.lev.ui.R;
+import ru.hw_team.lev.ui.basefragment.BaseFragment;
+import ru.hw_team.lev.ui.basefragment.LauncherFragment;
 
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import android.content.Intent;
-
-import static ru.hw_team.lev.ui.R.id.btnGoTask;
-
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
    /*
@@ -44,39 +31,38 @@ public class MainActivity extends Activity {
     @InjectView(R.id.etDate)
     private EditText etDate;
     */
-   //Button btnGoTask;
+    //Button btnGoTask;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.main_activity);
         Aibolit.doInjections(this);
+        LauncherFragment.INSTANCE.setFragmentManager(getSupportFragmentManager());
+        LauncherFragment.INSTANCE.setHomeFragment();
     }
 
-    @InjectOnClickListener(R.id.btnGoTask)
-    private void onBtnAddTaskClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnGoTask:
-                Intent intent = new Intent(this, TaskAddActivity.class);
-                startActivity(intent);
-                break;
-            default:
-                break;
-        }
-    }
 
-    @InjectOnClickListener(R.id.btnGoSchedule)
-    private void onBtnAddScheduleClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnGoSchedule:
-                Intent intent = new Intent(this, ScheduleAddActivity.class);
-                startActivity(intent);
-                break;
-            default:
-                break;
+    @Override
+    public void onBackPressed() {
+        FragmentManager fragmentManager = LauncherFragment.INSTANCE.getFragmentManager();
+        BaseFragment baseFragment = (BaseFragment) fragmentManager.findFragmentById(R.id.fragment);
+
+        if (fragmentManager.getBackStackEntryCount() <= 1) {
+            finish();
+        } else {
+            FragmentTransaction ft = fragmentManager.beginTransaction();
+            ft.remove(baseFragment);
+            try {
+                ft.commit();
+            } catch (IllegalStateException e) {
+                e.printStackTrace();
+            }
+            fragmentManager.popBackStackImmediate();
         }
     }
+}
 
 
 
@@ -136,4 +122,4 @@ public class MainActivity extends Activity {
             }
         }
     } */
-}
+//}

@@ -56,7 +56,7 @@
                 android:layout_width="25dip"
                 android:layout_height="25dip"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/calendar" />
+                android:src="@android:drawable/ic_menu_send" />
         </LinearLayout>
          <TextView
                 style="@style/TextView"
