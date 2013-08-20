@@ -9,7 +9,7 @@
 
     <string name="description">Description</string>
     <string name="title">Title</string>
-    <string name="date">Date</string>
+    <string name="date">Date/time</string>
     <string name="date_start">Date start</string>
     <string name="date_end">Date end</string>
     <string name="status">Status</string>
@@ -17,6 +17,7 @@
 
     <string name="description_hint">Write Description</string>
     <string name="title_hint">Write Title</string>
-    <string name="default_date">18/08/2013 11:19</string>
+    <string name="default_date">18/08/2013</string>
+    <string name="default_time">11:19</string>
 
 </resources>

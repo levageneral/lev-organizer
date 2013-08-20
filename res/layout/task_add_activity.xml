@@ -36,12 +36,22 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="10dp">
-        <TextView
+          <TextView
+              style="@style/TextView"
+              android:id="@+id/taskDateInfoTv"
+              android:text="@string/default_date"
+              android:clickable="true"
+              android:onClick="onclick"
+              android:textSize="22dp"/>
+          <TextView
                 style="@style/TextView"
-                android:hint="@string/default_date"
-                android:id="@+id/taskDateInfoTv"
-                android:textSize="20dp"/>
-        <ImageButton
+                android:text="@string/default_time"
+                android:id="@+id/taskTimeInfoTv"
+                android:textSize="22dp"
+                android:clickable="true"
+                android:onClick="onclick"
+                android:layout_marginLeft="10dp"/>
+           <ImageButton
                 android:id="@+id/taskImgBtnDate"
                 android:layout_width="25dip"
                 android:layout_height="25dip"

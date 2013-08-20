@@ -56,7 +56,6 @@ public class MainActivity extends Activity {
 
     @InjectOnClickListener(R.id.btnGoTask)
     private void onBtnAddTaskClick(View v) {
-
         switch (v.getId()) {
             case R.id.btnGoTask:
                 Intent intent = new Intent(this, TaskAddActivity.class);
@@ -69,7 +68,6 @@ public class MainActivity extends Activity {
 
     @InjectOnClickListener(R.id.btnGoSchedule)
     private void onBtnAddScheduleClick(View v) {
-
         switch (v.getId()) {
             case R.id.btnGoSchedule:
                 Intent intent = new Intent(this, ScheduleAddActivity.class);
