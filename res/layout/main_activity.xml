@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--Position for setup fragment to display-->
     <FrameLayout
         android:id="@id/fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"/>
 
-</LinearLayout>
+    <!--This is the component for sliding menu-->
+    <!--<com.jeremyfeinstein.slidingmenu.lib.SlidingMenu-->
+        <!--xmlns:sliding="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/sliding_menu"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--sliding:touchModeAbove="margin"-->
+        <!--sliding:behindOffset="25dp"-->
+        <!--sliding:behindWidth="25dp"-->
+        <!--sliding:shadowDrawable="@drawable/ic_launcher"-->
+        <!--sliding:shadowWidth="25dp"-->
+        <!--sliding:fadeEnabled="true"-->
+        <!--sliding:selectorEnabled="true"-->
+        <!--sliding:selectorDrawable="@drawable/ic_launcher"/>-->
+
+</FrameLayout>

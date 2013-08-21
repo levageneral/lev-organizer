@@ -1,10 +1,13 @@
 package ru.hw_team.lev.ui.activities;
 
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import com.danikula.aibolit.Aibolit;
+import com.danikula.aibolit.annotation.InjectView;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import ru.hw_team.lev.ui.R;
 import ru.hw_team.lev.ui.basefragment.BaseFragment;
 import ru.hw_team.lev.ui.basefragment.LauncherFragment;
@@ -12,10 +15,11 @@ import ru.hw_team.lev.ui.basefragment.LauncherFragment;
 public class MainActivity extends FragmentActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-   /*
-    @InjectView(R.id.description_tv)
-    private TextView tvDes;
 
+    private SlidingMenu menu;
+//    @InjectView(R.id.sliding_menu)
+//    private SlidingMenu slidingMenu;
+/*
     @InjectView(R.id.description_et)
     private EditText etDes;
 
@@ -41,11 +45,43 @@ public class MainActivity extends FragmentActivity {
         Aibolit.doInjections(this);
         LauncherFragment.INSTANCE.setFragmentManager(getSupportFragmentManager());
         LauncherFragment.INSTANCE.setHomeFragment();
+
+//        SlidingMenu menu = new SlidingMenu(this);
+//        menu.setMode(SlidingMenu.LEFT);
+//        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+//        menu.setFadeDegree(0.35f);
+//        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+//        menu.setMenu(R.layout.menu);
+        menu = new SlidingMenu(this);
+        menu.setMode(SlidingMenu.LEFT);
+        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+//        menu.setShadowWidthRes(R.dimen.shadow_width);
+//        menu.setShadowDrawable(R.drawable.shadow);
+//        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+        menu.setFadeDegree(0.35f);
+        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+        menu.setMenu(R.layout.menu);
+        menu.setBehindScrollScale(0.0f);
+        menu.setBehindCanvasTransformer(getCanvasTransformer());
     }
 
+    private SlidingMenu.CanvasTransformer getCanvasTransformer(){
+        return new SlidingMenu.CanvasTransformer() {
+            @Override
+            public void transformCanvas(Canvas canvas, float percentOpen) {
+                float scale = (float) (percentOpen*0.25 + 0.75);
+                canvas.scale(scale, scale, canvas.getWidth()/2, canvas.getHeight()/2);
+            }
+        };
+    }
 
     @Override
     public void onBackPressed() {
+        if (menu.isMenuShowing()) {
+            menu.showContent();
+            return;
+        }
+
         FragmentManager fragmentManager = LauncherFragment.INSTANCE.getFragmentManager();
         BaseFragment baseFragment = (BaseFragment) fragmentManager.findFragmentById(R.id.fragment);
 
