@@ -1,4 +1,4 @@
-package ru.hw_team.lev.ui.activities;
+package ru.hw_team.lev.ui.main;
 
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -6,37 +6,17 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import com.danikula.aibolit.Aibolit;
-import com.danikula.aibolit.annotation.InjectView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import ru.hw_team.lev.ui.R;
 import ru.hw_team.lev.ui.basefragment.BaseFragment;
 import ru.hw_team.lev.ui.basefragment.LauncherFragment;
+import ru.hw_team.lev.util.DisplayHelper;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements OnLoadFragmentListener{
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private SlidingMenu menu;
-//    @InjectView(R.id.sliding_menu)
-//    private SlidingMenu slidingMenu;
-/*
-    @InjectView(R.id.description_et)
-    private EditText etDes;
-
-    @InjectView(R.id.tvStatus)
-    private TextView tvStatus;
-
-    @InjectView(R.id.etStatus)
-    private EditText etStatus;
-
-    @InjectView(R.id.tvDate)
-    private TextView tvDate;
-
-    @InjectView(R.id.etDate)
-    private EditText etDate;
-    */
-    //Button btnGoTask;
-
+    private SlidingMenu slidingMenu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,23 +26,22 @@ public class MainActivity extends FragmentActivity {
         LauncherFragment.INSTANCE.setFragmentManager(getSupportFragmentManager());
         LauncherFragment.INSTANCE.setHomeFragment();
 
-//        SlidingMenu menu = new SlidingMenu(this);
-//        menu.setMode(SlidingMenu.LEFT);
-//        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-//        menu.setFadeDegree(0.35f);
-//        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
-//        menu.setMenu(R.layout.menu);
-        menu = new SlidingMenu(this);
-        menu.setMode(SlidingMenu.LEFT);
-        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        initSlidingMenu();
+    }
+
+    private void initSlidingMenu(){
+        slidingMenu = new SlidingMenu(this);
+        slidingMenu.setMode(SlidingMenu.LEFT);
+        slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 //        menu.setShadowWidthRes(R.dimen.shadow_width);
 //        menu.setShadowDrawable(R.drawable.shadow);
 //        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-        menu.setFadeDegree(0.35f);
-        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
-        menu.setMenu(R.layout.menu);
-        menu.setBehindScrollScale(0.0f);
-        menu.setBehindCanvasTransformer(getCanvasTransformer());
+        slidingMenu.setFadeDegree(0.35f);
+        slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+        slidingMenu.setMenu(R.layout.menu);
+        slidingMenu.setBehindScrollScale(0.0f);
+        slidingMenu.setBehindCanvasTransformer(getCanvasTransformer());
+        slidingMenu.setBehindOffset(DisplayHelper.dpToPx(50));
     }
 
     private SlidingMenu.CanvasTransformer getCanvasTransformer(){
@@ -77,8 +56,8 @@ public class MainActivity extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
-        if (menu.isMenuShowing()) {
-            menu.showContent();
+        if (slidingMenu.isMenuShowing()) {
+            slidingMenu.showContent();
             return;
         }
 
@@ -97,6 +76,26 @@ public class MainActivity extends FragmentActivity {
             }
             fragmentManager.popBackStackImmediate();
         }
+    }
+
+    @Override
+    public void onHomeLoad() {
+    }
+
+    @Override
+    public void onTasksLoad() {
+    }
+
+    @Override
+    public void onAddTaskLoad() {
+    }
+
+    @Override
+    public void onSchedulesLoad() {
+    }
+
+    @Override
+    public void onAddScheduleLoad() {
     }
 }
 

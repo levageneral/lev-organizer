@@ -1,6 +1,7 @@
 package ru.hw_team.lev.util;
 
 import android.app.Application;
+import android.content.Context;
 import ru.hw_team.lev.model.database.factory.HelperFactory;
 
 /**
@@ -10,9 +11,12 @@ import ru.hw_team.lev.model.database.factory.HelperFactory;
  */
 public class LevApplication extends Application {
 
+    private static LevApplication instance;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         HelperFactory.setHelper(getApplicationContext());
     }
 
@@ -20,5 +24,9 @@ public class LevApplication extends Application {
     public void onTerminate() {
         HelperFactory.releaseHelper();
         super.onTerminate();
+    }
+
+    public static Context getContext() {
+        return instance;
     }
 }

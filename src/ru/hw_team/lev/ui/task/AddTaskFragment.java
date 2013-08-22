@@ -1,9 +1,7 @@
 package ru.hw_team.lev.ui.task;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +11,7 @@ import com.danikula.aibolit.Aibolit;
 import com.danikula.aibolit.annotation.InjectOnClickListener;
 import com.danikula.aibolit.annotation.InjectView;
 import ru.hw_team.lev.ui.R;
-import ru.hw_team.lev.ui.activities.MainActivity;
 import ru.hw_team.lev.ui.basefragment.BaseFragment;
-import ru.hw_team.lev.ui.basefragment.LauncherFragment;
 
 /**
  * @author Oleg Illiashenko
