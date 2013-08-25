@@ -8,14 +8,18 @@ import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TimePicker;
+import android.widget.*;
 import com.danikula.aibolit.Aibolit;
 import com.danikula.aibolit.annotation.InjectOnClickListener;
 import com.danikula.aibolit.annotation.InjectView;
+import ru.hw_team.lev.model.database.entity.Task;
+import ru.hw_team.lev.model.database.factory.HelperFactory;
+
+import java.sql.SQLException;
+import java.util.Date;
+
 
 /**
  * User: general
@@ -23,6 +27,8 @@ import com.danikula.aibolit.annotation.InjectView;
  * Date: 18.08.13
  */
 public class TaskAddActivity extends Activity {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     int DIALOG_TIME = 1;
     int Hour = 14;
@@ -111,8 +117,25 @@ public class TaskAddActivity extends Activity {
 
 
     @InjectOnClickListener(R.id.btnTaskAdd)
-    private void onBtnTaskAddclick(View v){
+    private void onBtnTaskAddClick(View v){
         String description = etDes.getText().toString();
+        String title = etTitle.getText().toString();
+        Date date = new Date();
+        Log.d(TAG, "LOG Message onClick description: " + description);
+        Log.d(TAG, "LOG Message onClick title: " + title);
+        Log.d(TAG, "LOG Message onClick date: " + date);
+        Task task = new Task(0, description, title, date, 1, 2);
+
+        try {
+            HelperFactory.getHelper().getTaskDAO().createTask(task);
+            Log.d(TAG, "try HelperFactory.getHelper().getTaskDAO().createTask(task)");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Log.e(TAG, "catch SQLException");
+        }
+
+        Toast.makeText(this, "New Task was add", Toast.LENGTH_LONG).show();
+
     }
 
 }
