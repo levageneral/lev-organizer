@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
+import android.widget.AdapterView.OnItemSelectedListener;
 import com.danikula.aibolit.Aibolit;
 import com.danikula.aibolit.annotation.InjectOnClickListener;
 import com.danikula.aibolit.annotation.InjectView;
@@ -29,6 +30,8 @@ import java.util.Date;
 public class TaskAddActivity extends Activity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
+    String[] status = {"Не выполнено", "Выполняется", "Выполнено"};
+    String[] priority = {"Низкий", "Обычный", "Высокий", "Особенный"};
 
     int DIALOG_TIME = 1;
     int Hour = 14;
@@ -52,12 +55,56 @@ public class TaskAddActivity extends Activity {
     @InjectView(R.id.taskDateInfoTv)
     private TextView tvDate;
 
+    @InjectView(R.id.taskPrioritySpinner)
+    private Spinner spinnerPriority;
+
+    @InjectView(R.id.taskStatusSpinner)
+    private Spinner spinnerStatus;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task_add_activity);
         Aibolit.doInjections(this);
+        statusSpinner();
+        priorotySpinner();
+
     }
+    private void statusSpinner() {
+        ArrayAdapter<String> adapterStatus = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, status);
+        adapterStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner taskStatusSpinner = (Spinner) findViewById(R.id.taskStatusSpinner);
+
+        taskStatusSpinner.setAdapter(adapterStatus);
+        taskStatusSpinner.setPrompt("Статус");
+        taskStatusSpinner.setSelection(0);
+        taskStatusSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,int position, long id) {
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
+        int pos = taskStatusSpinner.getSelectedItemPosition();
+    }
+       private void priorotySpinner() {
+           ArrayAdapter<String> adapterPriority = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, priority);
+           adapterPriority.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+           Spinner taskPrioritySpinner = (Spinner) findViewById(R.id.taskPrioritySpinner);
+
+           taskPrioritySpinner.setAdapter(adapterPriority);
+           taskPrioritySpinner.setPrompt("Приоритет");
+           taskPrioritySpinner.setSelection(1);
+           taskPrioritySpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+               @Override
+               public void onItemSelected(AdapterView<?> parent, View view,int position, long id) {
+               }
+               @Override
+               public void onNothingSelected(AdapterView<?> arg0) {
+               }
+           });
+       }
 
     @InjectOnClickListener(R.id.btnTaskCancel)
     private void onBtnTaskCancelClick(View v) {
@@ -121,10 +168,15 @@ public class TaskAddActivity extends Activity {
         String description = etDes.getText().toString();
         String title = etTitle.getText().toString();
         Date date = new Date();
+        int status = spinnerStatus.getSelectedItemPosition();
+        int priority = spinnerPriority.getSelectedItemPosition();
+
         Log.d(TAG, "LOG Message onClick description: " + description);
         Log.d(TAG, "LOG Message onClick title: " + title);
         Log.d(TAG, "LOG Message onClick date: " + date);
-        Task task = new Task(0, description, title, date, 1, 2);
+        Log.d(TAG, "LOG Message onClick status: " +  status);
+        Log.d(TAG, "LOG Message onClick priority: " + priority);
+        Task task = new Task(0, description, title, date, status, priority);
 
         try {
             HelperFactory.getHelper().getTaskDAO().createTask(task);
