@@ -19,6 +19,7 @@ import ru.hw_team.lev.model.database.entity.Task;
 import ru.hw_team.lev.model.database.factory.HelperFactory;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -34,13 +35,13 @@ public class TaskAddActivity extends Activity {
     String[] priority = {"Низкий", "Обычный", "Высокий", "Особенный"};
 
     int DIALOG_TIME = 1;
-    int Hour = 14;
-    int Minute = 35;
+    //int Hour = 14;
+    //int Minute = 35;
 
     int DIALOG_DATE = 1;
-    int Year = 2013;
-    int Month = 07;
-    int Day = 20;
+    //int Year = 2013;
+    //int Month = 07;
+    //int Day = 20;
 
 
     @InjectView(R.id.taskDescriptionEt)
@@ -68,8 +69,22 @@ public class TaskAddActivity extends Activity {
         Aibolit.doInjections(this);
         statusSpinner();
         priorotySpinner();
+        defaultDateTime();
 
     }
+
+    private void defaultDateTime() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date();
+        String dateStr = dateFormat.format(date);
+        tvDate.setText(dateStr);
+
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        Date time = new Date();
+        String timeStr = timeFormat.format(time);
+        tvTime.setText(timeStr);
+    }
+
     private void statusSpinner() {
         ArrayAdapter<String> adapterStatus = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, status);
         adapterStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -129,6 +144,27 @@ public class TaskAddActivity extends Activity {
     }
 
     protected Dialog onCreateDialog(int id) {
+        SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+        Date yearDate = new Date();
+        int Year = Integer.parseInt(yearFormat.format(yearDate));
+
+        SimpleDateFormat monthFormat = new SimpleDateFormat("MM");
+        Date monthDate = new Date();
+        int  Month = Integer.parseInt(monthFormat.format(monthDate));
+
+        SimpleDateFormat dayFormat = new SimpleDateFormat("dd");
+        Date dayDate = new Date();
+        int Day = Integer.parseInt(dayFormat.format(dayDate));
+
+
+        SimpleDateFormat hourFormat = new SimpleDateFormat("HH");
+        Date hourDate = new Date();
+        int Hour = Integer.parseInt(hourFormat.format(hourDate));
+
+        SimpleDateFormat minuteFormat = new SimpleDateFormat("mm");
+        Date minuteDate = new Date();
+        int Minute = Integer.parseInt(minuteFormat.format(minuteDate));
+
         if (id == DIALOG_DATE) {
             DatePickerDialog tpd = new DatePickerDialog(this, CallBackDate, Year, Month, Day);
             return tpd;
@@ -142,16 +178,35 @@ public class TaskAddActivity extends Activity {
     }
 
     OnDateSetListener CallBackDate = new OnDateSetListener() {
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
+        SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+        Date yearDate = new Date();
+        int Year = Integer.parseInt(yearFormat.format(yearDate));
+
+        SimpleDateFormat monthFormat = new SimpleDateFormat("MM");
+        Date monthDate = new Date();
+        int  Month = Integer.parseInt(monthFormat.format(monthDate));
+
+        SimpleDateFormat dayFormat = new SimpleDateFormat("dd");
+        Date dayDate = new Date();
+        int Day = Integer.parseInt(dayFormat.format(dayDate));
+
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             Year = year;
-            Month = monthOfYear;
+            Month = monthOfYear + 1;
             Day = dayOfMonth;
-            tvDate.setText(Day + "/" + Month + "/" + Year);
+            tvDate.setText(Year  + "/" + Month + "/" + Day);
         }
     };
 
     OnTimeSetListener CallBackTime = new OnTimeSetListener() {
+        SimpleDateFormat hourFormat = new SimpleDateFormat("HH");
+        Date hourDate = new Date();
+        int Hour = Integer.parseInt(hourFormat.format(hourDate));
+
+        SimpleDateFormat minuteFormat = new SimpleDateFormat("mm");
+        Date minuteDate = new Date();
+        int Minute = Integer.parseInt(minuteFormat.format(minuteDate));
+
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             Hour = hourOfDay;
             Minute = minute;
