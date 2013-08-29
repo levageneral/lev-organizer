@@ -34,14 +34,10 @@ public class TaskAddActivity extends Activity {
     String[] status = {"Не выполнено", "Выполняется", "Выполнено"};
     String[] priority = {"Низкий", "Обычный", "Высокий", "Особенный"};
 
-    int DIALOG_TIME = 1;
-    //int Hour = 14;
-    //int Minute = 35;
+    static final int DIALOG_TIME = 1;
 
-    int DIALOG_DATE = 1;
-    //int Year = 2013;
-    //int Month = 07;
-    //int Day = 20;
+    static final int DIALOG_DATE = 0;
+
 
 
     @InjectView(R.id.taskDescriptionEt)
@@ -164,7 +160,7 @@ public class TaskAddActivity extends Activity {
         SimpleDateFormat minuteFormat = new SimpleDateFormat("mm");
         Date minuteDate = new Date();
         int Minute = Integer.parseInt(minuteFormat.format(minuteDate));
-
+        /*
         if (id == DIALOG_DATE) {
             DatePickerDialog tpd = new DatePickerDialog(this, CallBackDate, Year, Month, Day);
             return tpd;
@@ -174,7 +170,14 @@ public class TaskAddActivity extends Activity {
             return tpd;
         }
 
-        return super.onCreateDialog(id);
+        return super.onCreateDialog(id); */
+        switch(id){
+            case DIALOG_DATE:
+                return new DatePickerDialog(this, CallBackDate, Year, Month, Day);
+            case DIALOG_TIME:
+                return new TimePickerDialog(this, CallBackTime, Hour, Minute, true);
+        }
+        return null;
     }
 
     OnDateSetListener CallBackDate = new OnDateSetListener() {
