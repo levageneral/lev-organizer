@@ -160,18 +160,7 @@ public class TaskAddActivity extends Activity {
         SimpleDateFormat minuteFormat = new SimpleDateFormat("mm");
         Date minuteDate = new Date();
         int Minute = Integer.parseInt(minuteFormat.format(minuteDate));
-        /*
-        if (id == DIALOG_DATE) {
-            DatePickerDialog tpd = new DatePickerDialog(this, CallBackDate, Year, Month, Day);
-            return tpd;
-        }
-        else if (id == DIALOG_TIME) {
-            TimePickerDialog tpd = new TimePickerDialog(this, CallBackTime, Hour, Minute, true);
-            return tpd;
-        }
-
-        return super.onCreateDialog(id); */
-        switch(id){
+         switch(id){
             case DIALOG_DATE:
                 return new DatePickerDialog(this, CallBackDate, Year, Month, Day);
             case DIALOG_TIME:
@@ -229,22 +218,30 @@ public class TaskAddActivity extends Activity {
         int status = spinnerStatus.getSelectedItemPosition();
         int priority = spinnerPriority.getSelectedItemPosition();
 
-        Log.d(TAG, "LOG Message onClick description: " + description);
-        Log.d(TAG, "LOG Message onClick title: " + title);
-        Log.d(TAG, "LOG Message onClick date: " + date);
-        Log.d(TAG, "LOG Message onClick status: " +  status);
-        Log.d(TAG, "LOG Message onClick priority: " + priority);
-        Task task = new Task(0, description, title, date, status, priority);
-
-        try {
-            HelperFactory.getHelper().getTaskDAO().createTask(task);
-            Log.d(TAG, "try HelperFactory.getHelper().getTaskDAO().createTask(task)");
-        } catch (SQLException e) {
-            e.printStackTrace();
-            Log.e(TAG, "catch SQLException");
+        if (description.equals("") || title.equals(""))
+        {
+            Toast.makeText(this, "Не все поля заполнены", Toast.LENGTH_LONG).show();
         }
+         else
+        {
+            Log.d(TAG, "LOG Message onClick description: " + description);
+            Log.d(TAG, "LOG Message onClick title: " + title);
+            Log.d(TAG, "LOG Message onClick date: " + date);
+            Log.d(TAG, "LOG Message onClick status: " +  status);
+            Log.d(TAG, "LOG Message onClick priority: " + priority);
+            Task task = new Task(0, description, title, date, status, priority);
 
-        Toast.makeText(this, "New Task was add", Toast.LENGTH_LONG).show();
+            try {
+                HelperFactory.getHelper().getTaskDAO().createTask(task);
+                Log.d(TAG, "try HelperFactory.getHelper().getTaskDAO().createTask(task)");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                Log.e(TAG, "catch SQLException");
+            }
+
+            Toast.makeText(this, "New Task was add", Toast.LENGTH_LONG).show();
+
+        }
 
     }
 
