@@ -64,7 +64,7 @@ public class TaskAddActivity extends Activity {
         setContentView(R.layout.task_add_activity);
         Aibolit.doInjections(this);
         statusSpinner();
-        priorotySpinner();
+        prioritySpinner();
         defaultDateTime();
 
     }
@@ -99,7 +99,7 @@ public class TaskAddActivity extends Activity {
         });
         int pos = taskStatusSpinner.getSelectedItemPosition();
     }
-       private void priorotySpinner() {
+       private void prioritySpinner() {
            ArrayAdapter<String> adapterPriority = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, priority);
            adapterPriority.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
            Spinner taskPrioritySpinner = (Spinner) findViewById(R.id.taskPrioritySpinner);
@@ -119,14 +119,8 @@ public class TaskAddActivity extends Activity {
 
     @InjectOnClickListener(R.id.btnTaskCancel)
     private void onBtnTaskCancelClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnTaskCancel:
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
-                break;
-            default:
-                break;
-        }
     }
 
     @InjectOnClickListener(R.id.taskTimeInfoTv)
@@ -147,6 +141,7 @@ public class TaskAddActivity extends Activity {
         SimpleDateFormat monthFormat = new SimpleDateFormat("MM");
         Date monthDate = new Date();
         int  Month = Integer.parseInt(monthFormat.format(monthDate));
+        Month--;
 
         SimpleDateFormat dayFormat = new SimpleDateFormat("dd");
         Date dayDate = new Date();
