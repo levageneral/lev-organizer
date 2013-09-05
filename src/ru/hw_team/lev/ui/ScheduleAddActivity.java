@@ -16,6 +16,7 @@ import ru.hw_team.lev.model.database.entity.Schedule;
 import ru.hw_team.lev.model.database.factory.HelperFactory;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -31,6 +32,7 @@ public class ScheduleAddActivity extends Activity {
     static final int DIALOG_TIME_START = 1;
     static final int DIALOG_DATE_END = 2;
     static final int DIALOG_TIME_END = 3;
+    int Year, Month, Day, Hour, Minute;
 
     @InjectView(R.id.scheduleDescriptionEt)
     private EditText etDes;
@@ -55,7 +57,7 @@ public class ScheduleAddActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.schedule_add_activity);
         Aibolit.doInjections(this);
-       defaultDateTime();
+        defaultDateTime();
     }
 
     private void defaultDateTime() {
@@ -94,28 +96,26 @@ public class ScheduleAddActivity extends Activity {
 
     @Override
     protected Dialog onCreateDialog(int id) {
-
         SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
         Date yearDate = new Date();
-        int Year = Integer.parseInt(yearFormat.format(yearDate));
+        Year = Integer.parseInt(yearFormat.format(yearDate));
 
         SimpleDateFormat monthFormat = new SimpleDateFormat("MM");
         Date monthDate = new Date();
-        int  Month = Integer.parseInt(monthFormat.format(monthDate));
+        Month = Integer.parseInt(monthFormat.format(monthDate));
         Month--;
 
         SimpleDateFormat dayFormat = new SimpleDateFormat("dd");
         Date dayDate = new Date();
-        int Day = Integer.parseInt(dayFormat.format(dayDate));
-
+        Day = Integer.parseInt(dayFormat.format(dayDate));
 
         SimpleDateFormat hourFormat = new SimpleDateFormat("HH");
         Date hourDate = new Date();
-        int Hour = Integer.parseInt(hourFormat.format(hourDate));
+        Hour = Integer.parseInt(hourFormat.format(hourDate));
 
         SimpleDateFormat minuteFormat = new SimpleDateFormat("mm");
         Date minuteDate = new Date();
-        int Minute = Integer.parseInt(minuteFormat.format(minuteDate));
+        Minute = Integer.parseInt(minuteFormat.format(minuteDate));
 
         switch(id){
             case DIALOG_DATE_START:
@@ -133,37 +133,16 @@ public class ScheduleAddActivity extends Activity {
 
 
     public DatePickerDialog.OnDateSetListener CallBackDateStart = new DatePickerDialog.OnDateSetListener() {
-        SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
-        Date yearDate = new Date();
-        int Year = Integer.parseInt(yearFormat.format(yearDate));
-
-        SimpleDateFormat monthFormat = new SimpleDateFormat("MM");
-        Date monthDate = new Date();
-        int  Month = Integer.parseInt(monthFormat.format(monthDate));
-
-        SimpleDateFormat dayFormat = new SimpleDateFormat("dd");
-        Date dayDate = new Date();
-        int Day = Integer.parseInt(dayFormat.format(dayDate));
-
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             Year = year;
             Month = monthOfYear + 1;
             Day = dayOfMonth;
             tvDateStart.setText(Year  + "/" + Month + "/" + Day);
-
         }
     };
 
 
     TimePickerDialog.OnTimeSetListener CallBackTimeStart = new TimePickerDialog.OnTimeSetListener() {
-        SimpleDateFormat hourFormat = new SimpleDateFormat("HH");
-        Date hourDate = new Date();
-        int Hour = Integer.parseInt(hourFormat.format(hourDate));
-
-        SimpleDateFormat minuteFormat = new SimpleDateFormat("mm");
-        Date minuteDate = new Date();
-        int Minute = Integer.parseInt(minuteFormat.format(minuteDate));
-
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             Hour = hourOfDay;
             Minute = minute;
@@ -174,47 +153,21 @@ public class ScheduleAddActivity extends Activity {
 
 
     public DatePickerDialog.OnDateSetListener CallBackDateEnd = new DatePickerDialog.OnDateSetListener() {
-
-        SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
-        Date yearDate = new Date();
-        int Year = Integer.parseInt(yearFormat.format(yearDate));
-
-        SimpleDateFormat monthFormat = new SimpleDateFormat("MM");
-        Date monthDate = new Date();
-        int  Month = Integer.parseInt(monthFormat.format(monthDate));
-
-        SimpleDateFormat dayFormat = new SimpleDateFormat("dd");
-        Date dayDate = new Date();
-        int Day = Integer.parseInt(dayFormat.format(dayDate));
-
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             Year = year;
             Month = monthOfYear + 1;
             Day = dayOfMonth;
             tvDateEnd.setText(Year  + "/" + Month + "/" + Day);
-
         }
     };
 
     TimePickerDialog.OnTimeSetListener CallBackTimeEnd = new TimePickerDialog.OnTimeSetListener() {
-        SimpleDateFormat hourFormat = new SimpleDateFormat("HH");
-        Date hourDate = new Date();
-        int Hour = Integer.parseInt(hourFormat.format(hourDate));
-
-        SimpleDateFormat minuteFormat = new SimpleDateFormat("mm");
-        Date minuteDate = new Date();
-        int Minute = Integer.parseInt(minuteFormat.format(minuteDate));
-
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             Hour = hourOfDay;
             Minute = minute;
             tvTimeEnd.setText(Hour + ":" + Minute);
         }
     };
-
-
-
-
 
     @InjectOnClickListener(R.id.btnScheduleCancel)
     private void onBtnScheduleCancelClick(View v) {
@@ -223,18 +176,22 @@ public class ScheduleAddActivity extends Activity {
     }
 
     @InjectOnClickListener(R.id.btnScheduleAdd)
-    private void onBtnScheduleAddClick(View v) {
-         String description = etDes.getText().toString();
-         String title = etTitle.getText().toString();
-        String dateStr = tvDateStart.getText().toString();
-         Date dateStart = new Date();
-         Date dateEnd = new Date();
-        if (description.equals("") || title.equals(""))
-        {
+    private void onBtnScheduleAddClick(View v) throws ParseException {
+        String description = etDes.getText().toString();
+        String title = etTitle.getText().toString();
+        String dateStartStr = tvDateStart.getText().toString();
+        String timeStartStr = tvTimeStart.getText().toString();
+        String dateEndStr = tvDateEnd.getText().toString();
+        String timeEndStr = tvTimeEnd.getText().toString();
+        String dateTimeStart = dateStartStr + " " + timeStartStr;
+        String dateTimeEnd = dateEndStr + " " + timeEndStr;
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        Date dateStart = format.parse(dateTimeStart);
+        Date dateEnd = format.parse(dateTimeEnd);
+        if (description.equals("") || title.equals("")) {
             Toast.makeText(this, "Не все поля заполнены", Toast.LENGTH_LONG).show();
         }
-        else
-        {
+        else {
             Log.d(TAG, "LOG Message onClick description: " + description);
             Log.d(TAG, "LOG Message onClick title: " + title);
             Log.d(TAG, "LOG Message onClick dateStart: " + dateStart);
@@ -249,7 +206,5 @@ public class ScheduleAddActivity extends Activity {
             }
         Toast.makeText(this, "New Schedule was Add", Toast.LENGTH_LONG).show();
         }
-
     }
-
 }

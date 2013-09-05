@@ -25,27 +25,6 @@ import static ru.hw_team.lev.ui.R.id.btnGoTask;
 public class MainActivity extends Activity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-   /*
-    @InjectView(R.id.description_tv)
-    private TextView tvDes;
-
-    @InjectView(R.id.description_et)
-    private EditText etDes;
-
-    @InjectView(R.id.tvStatus)
-    private TextView tvStatus;
-
-    @InjectView(R.id.etStatus)
-    private EditText etStatus;
-
-    @InjectView(R.id.tvDate)
-    private TextView tvDate;
-
-    @InjectView(R.id.etDate)
-    private EditText etDate;
-    */
-   //Button btnGoTask;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,30 +35,27 @@ public class MainActivity extends Activity {
 
     @InjectOnClickListener(R.id.btnGoTask)
     private void onBtnAddTaskClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnGoTask:
-                Intent intent = new Intent(this, TaskAddActivity.class);
-                startActivity(intent);
-                break;
-            default:
-                break;
+        Intent intent = new Intent(this, TaskAddActivity.class);
+        startActivity(intent);
+
         }
-    }
+
 
     @InjectOnClickListener(R.id.btnGoSchedule)
     private void onBtnAddScheduleClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnGoSchedule:
-                Intent intent = new Intent(this, ScheduleAddActivity.class);
-                startActivity(intent);
-                break;
-            default:
-                break;
-        }
+         Intent intent = new Intent(this, ScheduleAddActivity.class);
+         startActivity(intent);
     }
 
+    @InjectOnClickListener(R.id.btnShowListTask)
+    private void onBtnShowListTaskClick(View v) {
 
+    }
 
+    @InjectOnClickListener(R.id.btnShowListSchedule)
+    private void onBtnShowListScheduleClick(View v) {
+
+    }
 
 
 

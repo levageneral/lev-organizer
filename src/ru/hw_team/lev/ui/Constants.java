@@ -6,4 +6,5 @@ package ru.hw_team.lev.ui;
  * Date: 25.08.13
  */
 public interface Constants {
+    public static final int test = 1;
 }

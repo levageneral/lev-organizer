@@ -54,7 +54,6 @@ public class Task {
         this.date = date;
         this.status = status;
         this.priority = priority;
-        Log.e(LOG_TAG, "LOG Message constructor Task()");
     }
 
     public int getId() {

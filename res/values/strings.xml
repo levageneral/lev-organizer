@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LEV</string>
-    <string name="btn_go_to_task">Add Task</string>
-    <string name="btn_go_to_schedule">Add Schedule</string>
+    <string name="btn_add_task">Add Task</string>
+    <string name="btn_add_schedule">Add Schedule</string>
+
+    <string name="btn_show_list_task">Show List Task</string>
+    <string name="btn_show_list_schedule">Show List Schedule</string>
 
     <string name="btn_add">Add</string>
     <string name="btn_cancel">Cancel</string>
