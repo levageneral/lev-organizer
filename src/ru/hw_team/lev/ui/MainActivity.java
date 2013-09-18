@@ -49,7 +49,8 @@ public class MainActivity extends Activity {
 
     @InjectOnClickListener(R.id.btnShowListTask)
     private void onBtnShowListTaskClick(View v) {
-
+        Intent intent = new Intent(this, TaskShowListActivity.class);
+        startActivity(intent);
     }
 
     @InjectOnClickListener(R.id.btnShowListSchedule)

@@ -28,16 +28,16 @@ public class Task {
     private int id;
 
     @DatabaseField(dataType = DataType.STRING, columnName = TASK_FIELD_DESCRIPTION)
-    private String description;
+    public String description;
 
     @DatabaseField(dataType = DataType.STRING, columnName = TASK_FIELD_TITLE)
     private String title;
 
     @DatabaseField(dataType = DataType.DATE, columnName = TASK_FIELD_DATE)
-    private Date date;
+    public Date date;
 
     @DatabaseField(dataType = DataType.INTEGER, columnName = TASK_FIELD_STATUS)
-    private int status;
+    public int status;
 
     @DatabaseField(dataType = DataType.INTEGER, columnName = TASK_FIELD_PRIORITY)
     private int priority;

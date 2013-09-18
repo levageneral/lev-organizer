@@ -28,8 +28,8 @@
                 android:layout_height="match_parent">
             <Button
                     style="@style/Button"
-                    android:text="@string/btn_show_list_task"
                     android:id="@+id/btnShowListTask"
+                    android:text="@string/btn_show_list_task"
                     android:layout_weight="1"/>
             <Button
                     style="@style/Button"
