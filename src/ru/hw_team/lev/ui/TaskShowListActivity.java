@@ -51,7 +51,7 @@ public class TaskShowListActivity extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        //String item = (String) getListAdapter().getItem((int) id);
+        //String item = (String) getListAdapter().getItem(position);
         // Toast.makeText(this, item + " выбран", Toast.LENGTH_LONG).show();
         Toast.makeText(this, " выбран", Toast.LENGTH_LONG).show();
     }
