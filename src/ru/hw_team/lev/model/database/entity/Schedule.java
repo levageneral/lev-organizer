@@ -26,16 +26,16 @@ public class Schedule {
     private int id;
 
     @DatabaseField(dataType = DataType.STRING, columnName = SCHEDULE_FIELD_DESCRIPTION)
-    private String description;
+    public String description;
 
     @DatabaseField(dataType = DataType.STRING, columnName = SCHEDULE_FIELD_TITLE)
     private String title;
 
     @DatabaseField(dataType = DataType.DATE, columnName = SCHEDULE_FIELD_DATE_START)
-    private Date dateStart;
+    public Date dateStart;
 
     @DatabaseField(dataType = DataType.DATE, columnName = SCHEDULE_FIELD_DATE_END)
-    private Date dateEnd;
+    public Date dateEnd;
 
     public Schedule() {
 

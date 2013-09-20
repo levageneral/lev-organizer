@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import ru.hw_team.lev.model.database.entity.Schedule;
 import ru.hw_team.lev.model.database.entity.Task;
 
 import java.text.SimpleDateFormat;
@@ -14,28 +15,28 @@ import java.util.ArrayList;
 /**
  * User: general
  * Email: im-leva@yandex.ru
- * Date: 16.09.13
+ * Date: 19.09.13
  */
-public class TaskAdapter extends BaseAdapter {
+public class ScheduleAdapter extends BaseAdapter {
 
     private LayoutInflater lInflater;
-    private ArrayList<Task> taskList;
+    private ArrayList<Schedule> scheduleList;
     private Context cont;
 
-    public TaskAdapter(Context context, ArrayList<Task> arTaskList) {
+    public ScheduleAdapter(Context context, ArrayList<Schedule> arScheduleList) {
         cont = context;
-        taskList = arTaskList;
+        scheduleList = arScheduleList;
         lInflater = (LayoutInflater) cont.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
-        return taskList.size();
+        return scheduleList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return taskList.get(position);
+        return scheduleList.get(position);
     }
 
     @Override
@@ -48,16 +49,15 @@ public class TaskAdapter extends BaseAdapter {
         View view = convertView;
 
         if (view == null) {
-            view = lInflater.inflate(R.layout.task_list_item, parent, false);
+            view = lInflater.inflate(R.layout.schedule_list_item, parent, false);
         }
-        Task task = ((Task) getItem(position));
-        ((TextView) view.findViewById(R.id.tvTaskDesList)).setText(task.description);
-        String statusSrt = task.getStatus().toString();
-        ((TextView) view.findViewById(R.id.tvStatusList)).setText(statusSrt);
-
+        Schedule schedule = ((Schedule) getItem(position));
+        ((TextView) view.findViewById(R.id.tvScheduleDesList)).setText(schedule.description);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-        String dateStr = dateFormat.format(task.date);
-        ((TextView) view.findViewById(R.id.tvDateList)).setText(dateStr);
+        String dateStartStr = dateFormat.format(schedule.dateStart);
+        ((TextView) view.findViewById(R.id.tvDateStartList)).setText(dateStartStr);
+        String dateEndStr = dateFormat.format(schedule.dateEnd);
+        ((TextView) view.findViewById(R.id.tvDateEndList)).setText(dateEndStr);
         return view;
     }
 }

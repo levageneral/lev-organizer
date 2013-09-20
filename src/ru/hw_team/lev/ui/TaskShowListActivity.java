@@ -5,6 +5,7 @@ import android.R.layout.*;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -51,9 +52,12 @@ public class TaskShowListActivity extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        //String item = (String) getListAdapter().getItem(position);
-        // Toast.makeText(this, item + " выбран", Toast.LENGTH_LONG).show();
-        Toast.makeText(this, " выбран", Toast.LENGTH_LONG).show();
+        Task task = (Task) getListAdapter().getItem(position);
+        String taskDescription = task.getDescription();
+        String taskStatus = task.getStatus().toString();
+        if (!TextUtils.isEmpty(taskDescription)) {
+            Toast.makeText(this,"выбран" + ": " + taskDescription + " "  + "Status" + " " + taskStatus, Toast.LENGTH_LONG).show();
+        }
     }
 
 }

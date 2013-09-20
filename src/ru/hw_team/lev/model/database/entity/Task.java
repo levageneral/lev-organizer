@@ -31,7 +31,7 @@ public class Task {
     public String description;
 
     @DatabaseField(dataType = DataType.STRING, columnName = TASK_FIELD_TITLE)
-    private String title;
+    public String title;
 
     @DatabaseField(dataType = DataType.DATE, columnName = TASK_FIELD_DATE)
     public Date date;
