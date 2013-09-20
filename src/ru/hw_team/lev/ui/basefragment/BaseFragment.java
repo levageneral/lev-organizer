@@ -19,11 +19,11 @@ import android.view.ViewGroup;
  */
 public abstract class BaseFragment extends Fragment {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(getLayoutResource(), null);
-        return view;
-    }
-
-    protected abstract int getLayoutResource();
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        View view = inflater.inflate(getLayoutResource(), null);
+//        return view;
+//    }
+//
+//    protected abstract int getLayoutResource();
 }

@@ -17,13 +17,8 @@ import ru.hw_team.lev.ui.basefragment.BaseFragment;
 public class AddScheduleFragment extends BaseFragment {
 
     @Override
-    protected int getLayoutResource() {
-        return R.layout.add_schedule_fragment;
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.add_schedule_fragment, null);
         Aibolit.doInjections(this, view);
 
         return view;

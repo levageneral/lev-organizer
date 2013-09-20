@@ -43,13 +43,8 @@ public class AddTaskFragment extends BaseFragment{
     private TextView tvDate;
 
     @Override
-    protected int getLayoutResource() {
-        return R.layout.task_add_fragment;
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.task_add_fragment, null);
         Aibolit.doInjections(this, view);
 
         return view;

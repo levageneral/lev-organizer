@@ -12,21 +12,32 @@ import ru.hw_team.lev.ui.basefragment.BaseFragment;
 import ru.hw_team.lev.ui.basefragment.LauncherFragment;
 import ru.hw_team.lev.util.DisplayHelper;
 
-public class MainActivity extends FragmentActivity implements OnLoadFragmentListener{
+public class MainActivity extends FragmentActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
+    private static MainActivity instance;
     private SlidingMenu slidingMenu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        instance = this;
+
         setContentView(R.layout.main_activity);
         Aibolit.doInjections(this);
         LauncherFragment.INSTANCE.setFragmentManager(getSupportFragmentManager());
         LauncherFragment.INSTANCE.setHomeFragment();
 
         initSlidingMenu();
+    }
+
+    public static MainActivity getInstance() {
+        return instance;
+    }
+
+    public SlidingMenu getSlidingMenu() {
+        return slidingMenu;
     }
 
     private void initSlidingMenu(){
@@ -41,7 +52,8 @@ public class MainActivity extends FragmentActivity implements OnLoadFragmentList
         slidingMenu.setMenu(R.layout.menu);
         slidingMenu.setBehindScrollScale(0.0f);
         slidingMenu.setBehindCanvasTransformer(getCanvasTransformer());
-        slidingMenu.setBehindOffset(DisplayHelper.dpToPx(50));
+        int displayWidth = DisplayHelper.getDisplaySize(this)[DisplayHelper.WIDTH_CELL];
+        slidingMenu.setBehindOffset(displayWidth - DisplayHelper.dpToPx(175));
     }
 
     private SlidingMenu.CanvasTransformer getCanvasTransformer(){
@@ -76,26 +88,6 @@ public class MainActivity extends FragmentActivity implements OnLoadFragmentList
             }
             fragmentManager.popBackStackImmediate();
         }
-    }
-
-    @Override
-    public void onHomeLoad() {
-    }
-
-    @Override
-    public void onTasksLoad() {
-    }
-
-    @Override
-    public void onAddTaskLoad() {
-    }
-
-    @Override
-    public void onSchedulesLoad() {
-    }
-
-    @Override
-    public void onAddScheduleLoad() {
     }
 }
 

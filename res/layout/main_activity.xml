@@ -4,18 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--&lt;!&ndash;This is the component for sliding menu&ndash;&gt;-->
-    <!--<com.jeremyfeinstein.slidingmenu.lib.SlidingMenu-->
-        <!--xmlns:sliding="http://schemas.android.com/apk/res-auto"-->
-        <!--android:id="@+id/sliding_menu"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="fill_parent"-->
-        <!--sliding:touchModeAbove="margin"-->
-        <!--sliding:fadeEnabled="true"-->
-        <!--sliding:selectorEnabled="true"-->
-        <!--sliding:selectorDrawable="@drawable/ic_launcher"/>-->
-
-    <!--Position for setup fragment to display-->
+    <!--Position for set fragment-->
     <FrameLayout
         android:id="@id/fragment"
         android:layout_width="match_parent"

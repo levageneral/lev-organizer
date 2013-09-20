@@ -18,25 +18,10 @@ import ru.hw_team.lev.ui.basefragment.LauncherFragment;
 public class HomeFragment extends BaseFragment{
 
     @Override
-    protected int getLayoutResource() {
-        return R.layout.home_fragment;
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.home_fragment, null);
         Aibolit.doInjections(this, view);
 
         return view;
-    }
-
-    @InjectOnClickListener(R.id.add_task_btn)
-    private void onBtnAddTaskClick(View v) {
-        LauncherFragment.INSTANCE.setAddTaskFragment();
-    }
-
-    @InjectOnClickListener(R.id.btnGoSchedule)
-    private void onBtnAddScheduleClick(View v) {
-        LauncherFragment.INSTANCE.setAddScheduleFragment();
     }
 }
