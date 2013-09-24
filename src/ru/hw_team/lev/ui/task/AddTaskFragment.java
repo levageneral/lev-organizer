@@ -150,16 +150,16 @@ public class AddTaskFragment extends BaseFragment{
         }
     };
 
-/*
-    private void statusSpinner() {
+
+    @InjectOnClickListener(R.id.taskStatusSpinner)
+    private void onTaskStatusSpinnerClick(View v) {
         ArrayAdapter<String> adapterStatus = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, status);
         adapterStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner taskStatusSpinner = (Spinner) findViewById(R.id.taskStatusSpinner);
 
-        taskStatusSpinner.setAdapter(adapterStatus);
-        taskStatusSpinner.setPrompt("Статус");
-        taskStatusSpinner.setSelection(0);
-        taskStatusSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+        spinnerStatus.setAdapter(adapterStatus);
+        spinnerStatus.setPrompt("Статус");
+        spinnerStatus.setSelection(0);
+        spinnerStatus.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,int position, long id) {
             }
@@ -172,12 +172,11 @@ public class AddTaskFragment extends BaseFragment{
     private void prioritySpinner() {
         ArrayAdapter<String> adapterPriority = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, priority);
         adapterPriority.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner taskPrioritySpinner = (Spinner) findViewById(R.id.taskPrioritySpinner);
 
-        taskPrioritySpinner.setAdapter(adapterPriority);
-        taskPrioritySpinner.setPrompt("Приоритет");
-        taskPrioritySpinner.setSelection(1);
-        taskPrioritySpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+        spinnerPriority.setAdapter(adapterPriority);
+        spinnerPriority.setPrompt("Приоритет");
+        spinnerPriority.setSelection(1);
+        spinnerPriority.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,int position, long id) {
             }
@@ -186,7 +185,7 @@ public class AddTaskFragment extends BaseFragment{
             }
         });
     }
-      */
+
 
 
 
@@ -231,4 +230,6 @@ public class AddTaskFragment extends BaseFragment{
     private void showToastMessage(String message) {
         Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
+
+
 }
