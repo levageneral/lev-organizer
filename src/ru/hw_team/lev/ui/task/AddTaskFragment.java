@@ -150,7 +150,7 @@ public class AddTaskFragment extends BaseFragment{
         }
     };
 
-
+     /*
     @InjectOnClickListener(R.id.taskStatusSpinner)
     private void onTaskStatusSpinnerClick(View v) {
         ArrayAdapter<String> adapterStatus = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, status);
@@ -169,7 +169,8 @@ public class AddTaskFragment extends BaseFragment{
         });
     }
 
-    private void prioritySpinner() {
+    @InjectOnClickListener(R.id.taskPrioritySpinner)
+    private void onTaskPrioritySpinnerClick() {
         ArrayAdapter<String> adapterPriority = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, priority);
         adapterPriority.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -186,8 +187,7 @@ public class AddTaskFragment extends BaseFragment{
         });
     }
 
-
-
+   */
 
     @InjectOnClickListener(R.id.btnTaskCancel)
     private void onBtnTaskCancelClick(View v) {

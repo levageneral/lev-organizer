@@ -14,6 +14,8 @@ import java.util.List;
  */
 public class ScheduleDAO extends BaseDaoImpl<Schedule, Integer> {
 
+    public int ERROR = -1;
+
     public ScheduleDAO(ConnectionSource connectionSource, Class<Schedule> dataClass) throws SQLException{
         super(connectionSource, dataClass);
 
@@ -21,5 +23,17 @@ public class ScheduleDAO extends BaseDaoImpl<Schedule, Integer> {
 
     public List<Schedule> getAllSchedule() throws SQLException{
         return this.queryForAll();
+    }
+
+    public int createSchedule(Schedule schedule){
+        if (schedule != null){
+            try {
+                return this.create(schedule);
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return ERROR;
+
     }
 }
