@@ -20,6 +20,8 @@ import ru.hw_team.lev.model.database.factory.HelperFactory;
 import ru.hw_team.lev.ui.R;
 import ru.hw_team.lev.ui.basefragment.BaseFragment;
 import ru.hw_team.lev.ui.main.MainActivity;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.Fragment;
 
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -91,15 +93,16 @@ public class AddTaskFragment extends BaseFragment{
 
     @InjectOnClickListener(R.id.taskTimeInfoTv)
     private void onTaskTimeInfoTvClick(View v) {
-    //    showDialog(DIALOG_TIME);
+        getActivity().showDialog(DIALOG_TIME);
         showToastMessage("showDialog(DIALOG_TIME)");
     }
 
     @InjectOnClickListener(R.id.taskDateInfoTv)
     private void onTaskDateInfoTv(View v) {
-      //  showDialog(DIALOG_DATE);
+      // getActivity().showDialog(DIALOG_DATE);
         showToastMessage("showDialog(DIALOG_DATE)");
     }
+
 
     protected Dialog onCreateDialog(int id) {
         SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
@@ -124,11 +127,11 @@ public class AddTaskFragment extends BaseFragment{
         Minute = Integer.parseInt(minuteFormat.format(minuteDate));
         switch(id){
             case DIALOG_DATE:
-               //return new DatePickerDialog(this, CallBackDate, Year, Month, Day);
-              showToastMessage("DatePickerDialog");
+              // return new DatePickerDialog(getActivity(), CallBackDate, Year, Month, Day);
+              //showToastMessage("DatePickerDialog");
             case DIALOG_TIME:
-         //       return new TimePickerDialog(this, CallBackTime, Hour, Minute, true);
-                showToastMessage("TimePickerDialog");
+               //return new TimePickerDialog(getActivity(), CallBackTime, Hour, Minute, true);
+               // showToastMessage("TimePickerDialog");
         }
         return null;
     }
@@ -150,10 +153,11 @@ public class AddTaskFragment extends BaseFragment{
         }
     };
 
-     /*
+
+   /*
     @InjectOnClickListener(R.id.taskStatusSpinner)
     private void onTaskStatusSpinnerClick(View v) {
-        ArrayAdapter<String> adapterStatus = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, status);
+        ArrayAdapter<String> adapterStatus = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, status);
         adapterStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerStatus.setAdapter(adapterStatus);
@@ -170,8 +174,8 @@ public class AddTaskFragment extends BaseFragment{
     }
 
     @InjectOnClickListener(R.id.taskPrioritySpinner)
-    private void onTaskPrioritySpinnerClick() {
-        ArrayAdapter<String> adapterPriority = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, priority);
+    private void onTaskPrioritySpinnerClick(View v) {
+        ArrayAdapter<String> adapterPriority = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, priority);
         adapterPriority.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerPriority.setAdapter(adapterPriority);
@@ -179,15 +183,14 @@ public class AddTaskFragment extends BaseFragment{
         spinnerPriority.setSelection(1);
         spinnerPriority.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view,int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             }
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
     }
-
-   */
+  */
 
     @InjectOnClickListener(R.id.btnTaskCancel)
     private void onBtnTaskCancelClick(View v) {
