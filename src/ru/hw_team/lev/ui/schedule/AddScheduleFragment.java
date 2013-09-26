@@ -80,26 +80,26 @@ public class AddScheduleFragment extends BaseFragment {
 
     @InjectOnClickListener(R.id.scheduleDateStartInfoTv)
     private void onScheduleDateStartInfoTv(View v) {
-       // showDialog(DIALOG_DATE_START);
-        showToastMessage("DIALOG_DATE_START");
+       getActivity().showDialog(DIALOG_DATE_START);
+       // showToastMessage("DIALOG_DATE_START");
     }
 
     @InjectOnClickListener(R.id.scheduleTimeStartInfoTv)
     private void onScheduleTimeStartInfoTv(View v) {
-      //  showDialog(DIALOG_TIME_START);
-        showToastMessage("DIALOG_TIME_START");
+      getActivity().showDialog(DIALOG_TIME_START);
+       // showToastMessage("DIALOG_TIME_START");
     }
 
     @InjectOnClickListener(R.id.scheduleDateEndInfoTv)
     private void onScheduleDateEndInfoTv(View v) {
-      //  showDialog(DIALOG_DATE_END);
-        showToastMessage("DIALOG_DATE_END");
+      getActivity().showDialog(DIALOG_DATE_END);
+        //showToastMessage("DIALOG_DATE_END");
     }
 
     @InjectOnClickListener(R.id.scheduleTimeEndInfoTv)
     private void onScheduleTimeEndInfoTv(View v) {
-       // showDialog(DIALOG_TIME_END);
-        showToastMessage("DIALOG_TIME_END");
+       getActivity().showDialog(DIALOG_TIME_END);
+        //showToastMessage("DIALOG_TIME_END");
     }
 
 
@@ -127,13 +127,13 @@ public class AddScheduleFragment extends BaseFragment {
 
         switch(id){
             case DIALOG_DATE_START:
-                //return new DatePickerDialog(this, CallBackDateStart, Year, Month, Day);
+                return new DatePickerDialog(getActivity(), CallBackDateStart, Year, Month, Day);
             case DIALOG_TIME_START:
-                //return new TimePickerDialog(this, CallBackTimeStart, Hour, Minute, true);
+                return new TimePickerDialog(getActivity(), CallBackTimeStart, Hour, Minute, true);
             case DIALOG_DATE_END:
-                //return new DatePickerDialog(this, CallBackDateEnd, Year, Month, Day);
+                return new DatePickerDialog(getActivity(), CallBackDateEnd, Year, Month, Day);
             case DIALOG_TIME_END:
-                //return new TimePickerDialog(this, CallBackTimeEnd, Hour, Minute, true);
+                return new TimePickerDialog(getActivity(), CallBackTimeEnd, Hour, Minute, true);
         }
         return null;
     }

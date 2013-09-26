@@ -59,14 +59,15 @@ public class AddTaskFragment extends BaseFragment{
     @InjectView(R.id.taskPrioritySpinner)
     private Spinner spinnerPriority;
 
-    @InjectView(R.id.taskStatusSpinner)
-    private Spinner spinnerStatus;
+   @InjectView(R.id.taskStatusSpinner)
+   private Spinner spinnerStatus;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.task_add_fragment, null);
         Aibolit.doInjections(this, view);
-        defaultDateTime();
+       defaultDateTime();
+     // statusSpinner();
         return view;
     }
 
@@ -94,13 +95,13 @@ public class AddTaskFragment extends BaseFragment{
     @InjectOnClickListener(R.id.taskTimeInfoTv)
     private void onTaskTimeInfoTvClick(View v) {
         getActivity().showDialog(DIALOG_TIME);
-        showToastMessage("showDialog(DIALOG_TIME)");
+        //showToastMessage("showDialog(DIALOG_TIME)");
     }
 
     @InjectOnClickListener(R.id.taskDateInfoTv)
     private void onTaskDateInfoTv(View v) {
-      // getActivity().showDialog(DIALOG_DATE);
-        showToastMessage("showDialog(DIALOG_DATE)");
+       getActivity().showDialog(DIALOG_DATE);
+        //showToastMessage("showDialog(DIALOG_DATE)");
     }
 
 
@@ -127,10 +128,10 @@ public class AddTaskFragment extends BaseFragment{
         Minute = Integer.parseInt(minuteFormat.format(minuteDate));
         switch(id){
             case DIALOG_DATE:
-              // return new DatePickerDialog(getActivity(), CallBackDate, Year, Month, Day);
+               return new DatePickerDialog(getActivity(), CallBackDate, Year, Month, Day);
               //showToastMessage("DatePickerDialog");
             case DIALOG_TIME:
-               //return new TimePickerDialog(getActivity(), CallBackTime, Hour, Minute, true);
+               return new TimePickerDialog(getActivity(), CallBackTime, Hour, Minute, true);
                // showToastMessage("TimePickerDialog");
         }
         return null;
@@ -153,17 +154,17 @@ public class AddTaskFragment extends BaseFragment{
         }
     };
 
+    /*
 
-   /*
-    @InjectOnClickListener(R.id.taskStatusSpinner)
-    private void onTaskStatusSpinnerClick(View v) {
+    private void statusSpinner() {
         ArrayAdapter<String> adapterStatus = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, status);
         adapterStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        spinnerStatus.setAdapter(adapterStatus);
-        spinnerStatus.setPrompt("Статус");
-        spinnerStatus.setSelection(0);
-        spinnerStatus.setOnItemSelectedListener(new OnItemSelectedListener() {
+        Spinner taskStatusSpinner = (Spinner) getView().findViewById(R.id.taskStatusSpinner);
+        showToastMessage("statusSpinnerClick");
+        taskStatusSpinner.setAdapter(adapterStatus);
+        taskStatusSpinner.setPrompt("Статус");
+        taskStatusSpinner.setSelection(0);
+        taskStatusSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,int position, long id) {
             }
@@ -172,7 +173,7 @@ public class AddTaskFragment extends BaseFragment{
             }
         });
     }
-
+   */  /*
     @InjectOnClickListener(R.id.taskPrioritySpinner)
     private void onTaskPrioritySpinnerClick(View v) {
         ArrayAdapter<String> adapterPriority = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, priority);
@@ -190,7 +191,7 @@ public class AddTaskFragment extends BaseFragment{
             }
         });
     }
-  */
+      */
 
     @InjectOnClickListener(R.id.btnTaskCancel)
     private void onBtnTaskCancelClick(View v) {
