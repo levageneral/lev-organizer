@@ -14,7 +14,7 @@ import ru.hw_team.lev.ui.basefragment.LauncherFragment;
 /**
  * Это наше боковое меню. Оно сделано фрагментом.
  */
-public class SideMenuFragment extends BaseFragment {
+public class SlideMenuFragment extends BaseFragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.side_menu_fragment, null);
@@ -29,10 +29,20 @@ public class SideMenuFragment extends BaseFragment {
         getSlidingMenu().toggle();
     }
 
-    @InjectOnClickListener(R.id.btnGoSchedule)
+    @InjectOnClickListener(R.id.add_schedule_btn)
     private void onBtnAddScheduleClick(View v) {
         LauncherFragment.INSTANCE.setAddScheduleFragment();
         getSlidingMenu().toggle();
+    }
+
+    @InjectOnClickListener(R.id.show_list_task_btn)
+    private void onBtnShowListTaskClick(View v) {
+        LauncherFragment.INSTANCE.setShowListTaskFragment();
+    }
+
+    @InjectOnClickListener(R.id.show_list_schedule_btn)
+    private void onBtnShowListScheduleClick(View v) {
+        LauncherFragment.INSTANCE.setShowListScheduleFragment();
     }
 
     /**

@@ -11,8 +11,19 @@
         android:text="@string/btn_go_to_task"/>
 
     <Button
-        android:id="@+id/btnGoSchedule"
+        android:id="@+id/add_schedule_btn"
         style="@style/Button"
         android:text="@string/btn_go_to_schedule"/>
+
+    <Button
+            android:id="@+id/show_list_task_btn"
+            style="@style/Button"
+            android:text="@string/btn_show_list_task"/>
+
+
+    <Button
+            android:id="@+id/show_list_schedule_btn"
+            style="@style/Button"
+            android:text="@string/btn_show_list_schedule"/>
 
 </LinearLayout>

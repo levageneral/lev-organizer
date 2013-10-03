@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import android.widget.AdapterView.OnItemSelectedListener;
 import com.danikula.aibolit.Aibolit;
 import com.danikula.aibolit.annotation.InjectOnClickListener;
 import com.danikula.aibolit.annotation.InjectView;
@@ -20,8 +19,6 @@ import ru.hw_team.lev.model.database.factory.HelperFactory;
 import ru.hw_team.lev.ui.R;
 import ru.hw_team.lev.ui.basefragment.BaseFragment;
 import ru.hw_team.lev.ui.main.MainActivity;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.Fragment;
 
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -64,7 +61,7 @@ public class AddTaskFragment extends BaseFragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.task_add_fragment, null);
+        View view = inflater.inflate(R.layout.add_task_fragment, null);
         Aibolit.doInjections(this, view);
        defaultDateTime();
      // statusSpinner();

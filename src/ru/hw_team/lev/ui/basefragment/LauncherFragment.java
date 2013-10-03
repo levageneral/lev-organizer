@@ -7,7 +7,9 @@ import android.support.v4.app.FragmentTransaction;
 import ru.hw_team.lev.ui.R;
 import ru.hw_team.lev.ui.home.HomeFragment;
 import ru.hw_team.lev.ui.schedule.AddScheduleFragment;
+import ru.hw_team.lev.ui.schedule.ShowListScheduleFragment;
 import ru.hw_team.lev.ui.task.AddTaskFragment;
+import ru.hw_team.lev.ui.task.ShowListTaskFragment;
 
 /**
  * @author Oleg Illiashenko
@@ -34,6 +36,14 @@ public enum LauncherFragment {
         startFragment(new AddScheduleFragment());
     }
 
+    public void setShowListTaskFragment() {
+        startFragment(new ShowListTaskFragment());
+    }
+
+    public void setShowListScheduleFragment() {
+        startFragment(new ShowListScheduleFragment());
+    }
+
     private void startFragment(BaseFragment baseFragment){
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment, baseFragment);
@@ -48,4 +58,6 @@ public enum LauncherFragment {
     public void setFragmentManager(FragmentManager fragmentManager) {
         this.fragmentManager = fragmentManager;
     }
+
+
 }
